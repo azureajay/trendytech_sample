@@ -1,0 +1,9 @@
+select([column for column in cust_raw_df]) == use this to select All the columns form the df instead of speciying it manually.
+
+function lit is used to assign a dummy value to a column
+withColumn('EMI_Eligible',lit('Y'))
+
+valid_cust_trans_df.select(col('*'), when(valid_cust_trans_df['EMI_Month'] == 3, round(((valid_cust_trans_df['Transaction_Amount']            + (valid_cust_trans_df['Transaction_Amount'] * 0.09))/3),2)).
+                               when(valid_cust_trans_df['EMI_Month']  == 6, round(((valid_cust_trans_df['Transaction_Amount'] + (valid_cust_trans_df['Transaction_Amount'] * 0.11))/6),2)).
+                               when(valid_cust_trans_df['EMI_Month']  == 9, round(((valid_cust_trans_df['Transaction_Amount'] + (valid_cust_trans_df['Transaction_Amount'] * 0.13))/9),2)).
+                               otherwise(0).alias('EMI_Amount') ).show()
