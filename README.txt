@@ -1,3 +1,3 @@
-This is test
+git 
 
-This is feature 1 commit
+this is commit from feature 1
